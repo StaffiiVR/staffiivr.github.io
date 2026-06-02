@@ -6,7 +6,7 @@
     <title>Staffii - Gaming Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body { background: linear-gradient(135deg, #0a0a16 0%, #1a1a2e 50%, #0d0d20 100%); color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 8rem; }
+        body { background: linear-gradient(135deg, #0a0a16 0%, #1a1a2e 50%, #0d0d20 100%); color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 4rem; }
         .reveal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 10, 22, 0.98); z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 1s ease; }
         .reveal-overlay.hidden { opacity: 0; pointer-events: none; }
         .orb { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.3; animation: float 20s infinite ease-in-out; }
@@ -80,13 +80,26 @@
         document.addEventListener('DOMContentLoaded', function() {
             let revealed = false;
             const audio = document.getElementById('bgMusicPlayer');
+            
+            // Ensure audio is ready before playing
+            function tryPlayAudio() {
+                if (audio.readyState === 0) {
+                    audio.load();
+                }
+                audio.playbackRate = 1;
+                audio.volume = 0.5;
+                return audio.play().then(() => {
+                    console.log('🎵 Music playing!');
+                }).catch(err => {
+                    console.error('Audio play blocked:', err);
+                });
+            }
+            
             const handleClick = function(e) {
                 if (!revealed) {
                     document.getElementById('revealOverlay').classList.add('hidden');
                     revealed = true;
-                    audio.loop = true;
-                    audio.volume = 0.5;
-                    audio.play().catch(console.error);
+                    tryPlayAudio();
                 }
                 document.removeEventListener('click', handleClick);
             };
