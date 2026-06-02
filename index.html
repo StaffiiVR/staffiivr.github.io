@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daddy's Gaming Corner</title>
+    <title>Staffii - Professional Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         /* guns.lol aesthetic - dark, ambient orbs, particle network */
@@ -13,6 +13,27 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
             min-height: 100vh;
+        }
+        
+        /* Hidden initial overlay for click-to-reveal */
+        .reveal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10, 10, 22, 0.98);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease;
+        }
+        
+        .reveal-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .reveal-content {
+            text-align: center;
         }
         
         /* Ambient glowing orbs */
@@ -61,6 +82,7 @@
             position: relative;
             width: 280px;
             height: 280px;
+            flex-shrink: 0;
         }
         .pfp-img {
             width: 100%;
@@ -92,7 +114,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1.5rem;
-            text-shadow: 0 0 40px rgba(167, 139, 250, 0.4);
         }
         
         .subtitle {
@@ -155,7 +176,7 @@
             background: linear-gradient(135deg, #3b2dc5 0%, #5c2985 100%);
         }
         
-        /* Music player mockup */
+        /* Music player */
         .music-player {
             display: flex;
             align-items: center;
@@ -191,16 +212,27 @@
             50% { height: 100%; }
         }
         
-        /* Responsive for smaller screens */
-        @media (max-width: 1024px) {
-            .landscape-container {
-                flex-direction: column;
-                text-align: center;
-                padding: 3rem 2rem;
-            }
-            
-            h1 { font-size: 2.5rem; }
-            .subtitle { font-size: 1.1rem; }
+        /* Contact section */
+        .contact-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(167, 139, 250, 0.2);
+        }
+        
+        .contact-title {
+            font-size: 1.5rem;
+            color: #e9d5ff;
+            margin-bottom: 1rem;
+        }
+        
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
         }
     </style>
 </head>
@@ -213,31 +245,41 @@
     <!-- Particle network -->
     <div class="particles"></div>
     
+    <!-- Click-to-reveal overlay -->
+    <div id="revealOverlay" class="reveal-overlay">
+        <div class="reveal-content fade-in">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">✨ Welcome</h1>
+            <p style="color: #c4b5fd; font-size: 1.2rem;">Click anywhere to explore my world ~</p>
+        </div>
+    </div>
+    
     <!-- Main landscape container -->
-    <div class="landscape-container">
+    <div class="landscape-container fade-in">
         <!-- Profile Picture -->
         <div class="pfp-container">
-            <img src="pfp.png" alt="Daddy's avatar" class="pfp-img">
+            <img src="pfp.png" alt="Staffii" class="pfp-img">
         </div>
         
         <!-- Content -->
         <div class="content">
-            <h1>Daddy's Gaming Corner</h1>
+            <h1>Staffii</h1>
             
             <p class="subtitle">
-                Welcome to my digital den! ฅ^•ﻌ•^ฅ  
+                Professional Developer & Digital Creator ฅ^•ﻌ•^ฅ  
                 <br><br>
-                VRChat | FFXIV | Gaming Setup •<br>
-                Check out my streams, see my snapshots, and hang out in my virtual spaces!
+                Full-stack developer specializing in Python, DevOps, and creative coding. 
+                Passionate about building elegant solutions and exploring the intersection 
+                of technology and art. Currently crafting immersive VR experiences and 
+                developing production-grade applications.
             </p>
             
             <!-- Animated badges -->
             <div class="badge-container">
-                <div class="badge">🎮 PC Master Race</div>
-                <div class="badge">⚔️ FFXIV Scholar</div>
-                <div class="badge">👻 VRChat Ghost Walker</div>
-                <div class="badge">💪 Gym Beast Mode</div>
-                <div class="badge">🎵 Music Enthusiast</div>
+                <div class="badge">💻 Python & JavaScript</div>
+                <div class="badge">🐳 Docker & Kubernetes</div>
+                <div class="badge">☁️ AWS & GCP Cloud</div>
+                <div class="badge">🎮 Game Development</div>
+                <div class="badge">🤖 AI/ML Engineering</div>
             </div>
             
             <!-- Social links -->
@@ -256,7 +298,19 @@
                 </a>
             </div>
             
-            <!-- Animated music visualizer mockup -->
+            <!-- Contact section -->
+            <div class="contact-section">
+                <h2 class="contact-title">📬 Let's Connect</h2>
+                <p style="color: #c4b5fd; margin-bottom: 1rem;">
+                    Open to collaboration opportunities and exciting projects! 
+                    Whether you have a question, want to chat about tech, or just want to say hi...
+                </p>
+                <a href="mailto:staffiivrvr@gmail.com" class="social-link">
+                    ✉️ staffiivrvr@gmail.com →
+                </a>
+            </div>
+            
+            <!-- Animated music visualizer -->
             <div class="music-player">
                 <div class="music-visualizer">
                     <div class="bar" style="height: 30%;"></div>
@@ -268,13 +322,27 @@
                     <div class="bar" style="height: 40%;"></div>
                     <div class="bar" style="height: 65%;"></div>
                 </div>
-                <span style="color: #c4b5fd; font-weight: 500;">♫ Now Playing on YouTube Music</span>
+                <span style="color: #c4b5fd; font-weight: 500;">♫ Music Player</span>
             </div>
         </div>
     </div>
     
     <script>
-        // Add subtle mouse parallax to orbs
+        // Click anywhere to reveal page and play music
+        document.addEventListener('click', function() {
+            const overlay = document.getElementById('revealOverlay');
+            const audio = new Audio('/wsl_media/snapshots/background-music.mp3');
+            
+            // Fade out overlay
+            overlay.classList.add('hidden');
+            
+            // Play music (loop enabled)
+            audio.loop = true;
+            audio.volume = 0.5; // 50% volume
+            audio.play().catch(e => console.log('Audio play blocked until interaction:', e));
+        });
+        
+        // Subtle mouse parallax to orbs
         document.addEventListener('mousemove', (e) => {
             const orbs = document.querySelectorAll('.orb');
             orbs.forEach((orb, index) => {
@@ -283,6 +351,16 @@
                 const y = (window.innerHeight - e.pageY * speed) / 10000;
                 orb.style.transform = `translate(${x}px, ${y}px)`;
             });
+        });
+        
+        // Particle network mouse interaction
+        document.addEventListener('mousemove', (e) => {
+            const particles = document.querySelectorAll('.particles');
+            if (particles.length > 0) {
+                const x = e.pageX * 0.1;
+                const y = e.pageY * 0.1;
+                particles[0].style.backgroundPosition = `${x}px ${y}px`;
+            }
         });
     </script>
 </body>
