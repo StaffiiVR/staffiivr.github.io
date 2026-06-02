@@ -79,7 +79,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let revealed = false;
-            const audio = document.getElementById('bgMusicPlayer');
             
             const handleClick = function(e) {
                 if (!revealed) {
@@ -88,28 +87,25 @@
                     
                     revealed = true;
                     
-                    // Try multiple times to play audio (sometimes browsers need retries)
-                    let attempts = 0;
-                    function tryPlay() {
-                        attempts++;
-                        console.log(`🎵 Audio attempt ${attempts}`);
+                    // Create a fresh audio object and play immediately (some browsers handle this better)
+                    const playAudio = function() {
+                        console.log('🎵 Playing audio...');
                         
-                        if (attempts > 3) {
-                            console.error('Audio failed after multiple attempts');
-                            return;
-                        }
+                        // Try to play - catch errors from browser autoplay restrictions
+                        const audio = new Audio('/background-music.mp3');
+                        audio.loop = true;
+                        audio.volume = 0.5;
                         
-                        audio.load();
-                        audio.play().then(() => {
+                        try {
+                            audio.play();
                             console.log('✅ Music playing!');
-                        }).catch(err => {
-                            console.error('❌ Audio error:', err);
-                        });
-                        
-                        setTimeout(tryPlay, 500);
-                    }
+                        } catch(err) {
+                            console.error('❌ Play error:', err);
+                        }
+                    };
                     
-                    tryPlay();
+                    // Use requestAnimationFrame to ensure we're in the right state
+                    requestAnimationFrame(playAudio);
                 }
                 document.removeEventListener('click', handleClick);
             };
