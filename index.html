@@ -6,7 +6,7 @@
     <title>Staffii - Gaming Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body { background: linear-gradient(135deg, #0a0a16 0%, #1a1a2e 50%, #0d0d20 100%); color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; min-height: 100vh; }
+        body { background: linear-gradient(135deg, #0a0a16 0%, #1a1a2e 50%, #0d0d20 100%); color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 8rem; }
         .reveal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 10, 22, 0.98); z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 1s ease; }
         .reveal-overlay.hidden { opacity: 0; pointer-events: none; }
         .orb { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.3; animation: float 20s infinite ease-in-out; }
@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-    <audio id="bgMusicPlayer" loop></audio>
+    <audio id="bgMusicPlayer" preload="auto" loop></audio>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let revealed = false;
