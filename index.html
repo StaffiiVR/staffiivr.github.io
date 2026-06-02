@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staffii - Professional Portfolio</title>
+    <title>Staffii - Gaming Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         /* guns.lol aesthetic - dark, ambient orbs, particle network */
@@ -75,6 +75,7 @@
             display: flex;
             align-items: center;
             gap: 4rem;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
         
         /* Profile picture with glow */
@@ -104,6 +105,7 @@
         /* Content section */
         .content {
             flex: 1;
+            min-width: 300px; /* Minimum width for content */
         }
         
         h1 {
@@ -212,19 +214,6 @@
             50% { height: 100%; }
         }
         
-        /* Contact section */
-        .contact-section {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(167, 139, 250, 0.2);
-        }
-        
-        .contact-title {
-            font-size: 1.5rem;
-            color: #e9d5ff;
-            margin-bottom: 1rem;
-        }
-        
         /* Fade-in animation */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -233,6 +222,24 @@
         
         .fade-in {
             animation: fadeIn 1.5s ease-out forwards;
+        }
+        
+        /* Responsive for smaller screens */
+        @media (max-width: 768px) {
+            .landscape-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 3rem 1.5rem;
+                gap: 2rem;
+            }
+            
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1.1rem; }
+            .social-link { 
+                display: inline-block; /* Stack links horizontally on mobile */
+                margin: 0.5rem auto;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -265,21 +272,22 @@
             <h1>Staffii</h1>
             
             <p class="subtitle">
-                Professional Developer & Digital Creator ฅ^•ﻌ•^ฅ  
+                Professional Gamer & Digital Creator ฅ^•ﻌ•^ฅ  
                 <br><br>
-                Full-stack developer specializing in Python, DevOps, and creative coding. 
-                Passionate about building elegant solutions and exploring the intersection 
-                of technology and art. Currently crafting immersive VR experiences and 
-                developing production-grade applications.
+                VRChat Ghost Walker | FFXIV Scholar (P9S Savage!) | Gym Beast Mode  
+                <br><br>
+                Full-time gaming enthusiast who codes when life slows down. Building 
+                custom scripts, automation tools, and digital experiences. Streaming my 
+                virtual adventures and real-world gains to inspire others to level up!
             </p>
             
-            <!-- Animated badges -->
+            <!-- Animated badges - GAMING IDENTITY ONLY! -->
             <div class="badge-container">
-                <div class="badge">💻 Python & JavaScript</div>
-                <div class="badge">🐳 Docker & Kubernetes</div>
-                <div class="badge">☁️ AWS & GCP Cloud</div>
-                <div class="badge">🎮 Game Development</div>
-                <div class="badge">🤖 AI/ML Engineering</div>
+                <div class="badge">🎮 PC Master Race</div>
+                <div class="badge">⚔️ FFXIV Scholar</div>
+                <div class="badge">👻 VRChat Ghost Walker</div>
+                <div class="badge">💪 Gym Beast Mode</div>
+                <div class="badge">🎵 Music Enthusiast</div>
             </div>
             
             <!-- Social links -->
@@ -295,18 +303,6 @@
                 </a>
                 <a href="steam://run/503460" target="_blank" rel="noopener noreferrer" class="social-link">
                     🎮 Steam →
-                </a>
-            </div>
-            
-            <!-- Contact section -->
-            <div class="contact-section">
-                <h2 class="contact-title">📬 Let's Connect</h2>
-                <p style="color: #c4b5fd; margin-bottom: 1rem;">
-                    Open to collaboration opportunities and exciting projects! 
-                    Whether you have a question, want to chat about tech, or just want to say hi...
-                </p>
-                <a href="mailto:staffiivrvr@gmail.com" class="social-link">
-                    ✉️ staffiivrvr@gmail.com →
                 </a>
             </div>
             
