@@ -276,10 +276,7 @@
                 <br><br>
                 VRChat Ghost Walker | FFXIV Scholar (P9S Savage!) | Gym Beast Mode  
                 <br><br>
-                Full-time gaming enthusiast who codes when life slows down. Building 
-                custom scripts, automation tools, and digital experiences. Streaming my 
-                virtual adventures and real-world gains to inspire others to level up!
-            </p>
+                Ready to connect with fellow gamers and creators. Always looking for new adventures in virtual worlds and beyond! ฅ^•ﻌ•^ฅ<br><br><a href="mailto:staffiivrvr@gmail.com" class="social-link">📬 Contact me</a></p>
             
             <!-- Animated badges - GAMING IDENTITY ONLY! -->
             <div class="badge-container">
@@ -327,7 +324,16 @@
         // Click anywhere to reveal page and play music
         document.addEventListener('click', function() {
             const overlay = document.getElementById('revealOverlay');
+            
+            // Stop any existing audio instances to prevent overlap
+            const existingAudio = document.getElementById('bgMusicPlayer');
+            if (existingAudio) {
+                existingAudio.pause();
+                existingAudio.currentTime = 0;
+            }
+            
             const audio = new Audio('/background-music.mp3');
+            audio.id = 'bgMusicPlayer'; // Give it an ID for later control
             
             // Fade out overlay
             overlay.classList.add('hidden');
